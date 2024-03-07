@@ -1,0 +1,14 @@
+triad_df = pd.read_excel(DATA_PATH+'task1/train_triad.xlsx')
+json_files_directory = DATA_PATH +'task1/'
+
+
+# 处理所有文件并收集数据
+for file_name in os.listdir(json_files_directory):
+    if file_name.endswith('.json'):
+        try:
+            file_path = os.path.join(json_files_directory, file_name)
+            result = process_json_file_task1(file_path, triad_df)
+            new_data.append(result)
+            print(f"Transformation complete for {file_name}")
+        except:
+            continue
